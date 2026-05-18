@@ -551,7 +551,8 @@ async function doLogin() {
 
 async function onLogin(user) {
   currentUser = user;
-  const { data: profile } = await sb.from('profiles').select('*').eq('id', user.id).single();
+  const { data: profileArr } = await sb.from('profiles').select('*').eq('id', user.id).limit(1);
+  const profile = profileArr && profileArr.length > 0 ? profileArr[0] : { nome: user.email.split('@')[0], papel: 'viewer' };
   currentProfile = profile;
   document.getElementById('sb-uname').textContent = profile?.nome || user.email.split('@')[0];
   document.getElementById('sb-urole').textContent = profile?.papel === 'admin' ? 'Administrador' : 'Visualizador';
