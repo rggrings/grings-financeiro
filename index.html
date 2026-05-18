@@ -35,164 +35,164 @@
   --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
-a { color: var(--green); text-decoration: none; }
+body { font-family: 'DM Sans', sans-serif; background: #F7F7F5; color: #1A1A18; font-size: 14px; line-height: 1.5; }
+a { color: #1D9E75; text-decoration: none; }
 
 /* AUTH */
 #auth-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-.auth-card { background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 2.5rem; width: 360px; box-shadow: var(--shadow); }
-.auth-logo { width: 40px; height: 40px; background: var(--green); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+.auth-card { background: #FFFFFF; border-radius: 14px; border: 1px solid rgba(0,0,0,0.08); padding: 2.5rem; width: 360px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+.auth-logo { width: 40px; height: 40px; background: #1D9E75; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
 .auth-logo svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
 .auth-title { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
-.auth-sub { font-size: 13px; color: var(--text2); margin-bottom: 1.5rem; }
+.auth-sub { font-size: 13px; color: #6B6B67; margin-bottom: 1.5rem; }
 .field { margin-bottom: 12px; }
-.field label { display: block; font-size: 12px; font-weight: 500; color: var(--text2); margin-bottom: 5px; text-transform: uppercase; letter-spacing: .05em; }
-.field input { width: 100%; padding: 9px 12px; border: 1px solid var(--border2); border-radius: var(--radius); font-size: 14px; font-family: inherit; background: var(--bg); color: var(--text); outline: none; transition: border-color .15s; }
-.field input:focus { border-color: var(--green); }
-.btn-primary { width: 100%; padding: 10px; background: var(--green); color: #fff; border: none; border-radius: var(--radius); font-size: 14px; font-weight: 500; font-family: inherit; cursor: pointer; transition: background .15s; }
+.field label { display: block; font-size: 12px; font-weight: 500; color: #6B6B67; margin-bottom: 5px; text-transform: uppercase; letter-spacing: .05em; }
+.field input { width: 100%; padding: 9px 12px; border: 1px solid rgba(0,0,0,0.14); border-radius: 10px; font-size: 14px; font-family: inherit; background: #F7F7F5; color: #1A1A18; outline: none; transition: border-color .15s; }
+.field input:focus { border-color: #1D9E75; }
+.btn-primary { width: 100%; padding: 10px; background: #1D9E75; color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 500; font-family: inherit; cursor: pointer; transition: background .15s; }
 .btn-primary:hover { background: #168a64; }
 .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
-.auth-err { font-size: 12px; color: var(--red-text); background: var(--red-bg); border-radius: var(--radius); padding: 8px 12px; margin-bottom: 12px; display: none; }
+.auth-err { font-size: 12px; color: #8B2315; background: #FDF0EE; border-radius: 10px; padding: 8px 12px; margin-bottom: 12px; display: none; }
 
 /* APP */
 #app-screen { display: none; min-height: 100vh; }
-.sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 1.25rem 0; z-index: 100; }
-.sb-logo { display: flex; align-items: center; gap: 10px; padding: 0 1.25rem 1.25rem; border-bottom: 1px solid var(--border); margin-bottom: .75rem; }
-.sb-logo-icon { width: 32px; height: 32px; background: var(--green); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: #FFFFFF; border-right: 1px solid rgba(0,0,0,0.08); display: flex; flex-direction: column; padding: 1.25rem 0; z-index: 100; }
+.sb-logo { display: flex; align-items: center; gap: 10px; padding: 0 1.25rem 1.25rem; border-bottom: 1px solid rgba(0,0,0,0.08); margin-bottom: .75rem; }
+.sb-logo-icon { width: 32px; height: 32px; background: #1D9E75; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .sb-logo-icon svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
-.sb-name { font-size: 13px; font-weight: 500; color: var(--text); }
-.sb-sub { font-size: 11px; color: var(--text3); }
+.sb-name { font-size: 13px; font-weight: 500; color: #1A1A18; }
+.sb-sub { font-size: 11px; color: #9C9C98; }
 .sb-nav { flex: 1; padding: 0 .75rem; overflow-y: auto; }
-.sb-section { font-size: 10px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: .07em; padding: .75rem .5rem .25rem; }
-.sb-item { display: flex; align-items: center; gap: 9px; padding: 7px 10px; border-radius: 8px; cursor: pointer; color: var(--text2); font-size: 13px; font-weight: 400; transition: all .12s; margin-bottom: 1px; }
-.sb-item:hover { background: var(--surface2); color: var(--text); }
-.sb-item.on { background: var(--green-bg); color: var(--green-text); font-weight: 500; }
+.sb-section { font-size: 10px; font-weight: 500; color: #9C9C98; text-transform: uppercase; letter-spacing: .07em; padding: .75rem .5rem .25rem; }
+.sb-item { display: flex; align-items: center; gap: 9px; padding: 7px 10px; border-radius: 8px; cursor: pointer; color: #6B6B67; font-size: 13px; font-weight: 400; transition: all .12s; margin-bottom: 1px; }
+.sb-item:hover { background: #F2F2EF; color: #1A1A18; }
+.sb-item.on { background: #EAF7F1; color: #0A5C42; font-weight: 500; }
 .sb-item svg { width: 16px; height: 16px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.sb-footer { padding: .75rem 1.25rem; border-top: 1px solid var(--border); }
+.sb-footer { padding: .75rem 1.25rem; border-top: 1px solid rgba(0,0,0,0.08); }
 .sb-user { display: flex; align-items: center; gap: 9px; }
-.sb-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--green-bg); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: var(--green-text); flex-shrink: 0; }
-.sb-uname { font-size: 12px; font-weight: 500; color: var(--text); }
-.sb-urole { font-size: 11px; color: var(--text3); }
-.sb-logout { margin-left: auto; background: none; border: none; cursor: pointer; color: var(--text3); padding: 4px; border-radius: 6px; }
-.sb-logout:hover { color: var(--red); background: var(--red-bg); }
+.sb-avatar { width: 30px; height: 30px; border-radius: 50%; background: #EAF7F1; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #0A5C42; flex-shrink: 0; }
+.sb-uname { font-size: 12px; font-weight: 500; color: #1A1A18; }
+.sb-urole { font-size: 11px; color: #9C9C98; }
+.sb-logout { margin-left: auto; background: none; border: none; cursor: pointer; color: #9C9C98; padding: 4px; border-radius: 6px; }
+.sb-logout:hover { color: #D94F3D; background: #FDF0EE; }
 .sb-logout svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 
 .main { margin-left: 220px; padding: 2rem; min-height: 100vh; }
 .page { display: none; }
 .page.on { display: block; }
 .page-header { margin-bottom: 1.5rem; }
-.page-title { font-size: 20px; font-weight: 500; color: var(--text); letter-spacing: -.02em; }
-.page-sub { font-size: 13px; color: var(--text2); margin-top: 2px; }
+.page-title { font-size: 20px; font-weight: 500; color: #1A1A18; letter-spacing: -.02em; }
+.page-sub { font-size: 13px; color: #6B6B67; margin-top: 2px; }
 
 /* CARDS */
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 10px; margin-bottom: 1.25rem; }
-.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
-.kpi-l { font-size: 11px; color: var(--text2); margin-bottom: 5px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+.kpi { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; padding: 14px 16px; }
+.kpi-l { font-size: 11px; color: #6B6B67; margin-bottom: 5px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
 .kpi-v { font-size: 20px; font-weight: 500; letter-spacing: -.025em; }
-.kpi-v.g { color: var(--green); } .kpi-v.r { color: var(--red); } .kpi-v.a { color: var(--amber); }
-.kpi-s { font-size: 11px; color: var(--text3); margin-top: 2px; }
+.kpi-v.g { color: #1D9E75; } .kpi-v.r { color: #D94F3D; } .kpi-v.a { color: #C97B1A; }
+.kpi-s { font-size: 11px; color: #9C9C98; margin-top: 2px; }
 
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 12px; box-shadow: var(--shadow); }
-.card-title { font-size: 11px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: var(--text2); margin-bottom: 1rem; }
+.card { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 1.25rem; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+.card-title { font-size: 11px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: #6B6B67; margin-bottom: 1rem; }
 .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
 
 /* ROWS */
-.row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); }
+.row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
 .row:last-child { border-bottom: none; padding-bottom: 0; }
-.row-l { font-size: 13px; color: var(--text); }
-.row-s { font-size: 11px; color: var(--text3); margin-top: 1px; }
+.row-l { font-size: 13px; color: #1A1A18; }
+.row-s { font-size: 11px; color: #9C9C98; margin-top: 1px; }
 .row-v { font-size: 13px; font-weight: 500; white-space: nowrap; padding-left: 8px; }
-.row-v.g { color: var(--green); } .row-v.r { color: var(--red); } .row-v.a { color: var(--amber); } .row-v.b { color: var(--blue); }
-.bar-track { height: 3px; background: var(--surface2); border-radius: 2px; margin-top: 5px; overflow: hidden; }
+.row-v.g { color: #1D9E75; } .row-v.r { color: #D94F3D; } .row-v.a { color: #C97B1A; } .row-v.b { color: #2B6CB0; }
+.bar-track { height: 3px; background: #F2F2EF; border-radius: 2px; margin-top: 5px; overflow: hidden; }
 .bar-fill { height: 100%; border-radius: 2px; }
 
 /* BADGES */
 .bdg { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
-.bdg-g { background: var(--green-bg); color: var(--green-text); }
-.bdg-r { background: var(--red-bg); color: var(--red-text); }
-.bdg-a { background: var(--amber-bg); color: var(--amber-text); }
-.bdg-b { background: var(--blue-bg); color: var(--blue-text); }
+.bdg-g { background: #EAF7F1; color: #0A5C42; }
+.bdg-r { background: #FDF0EE; color: #8B2315; }
+.bdg-a { background: #FDF5E6; color: #7A4A08; }
+.bdg-b { background: #EBF4FF; color: #1A3F6F; }
 
 /* ALERTS */
-.alert { border-left: 3px solid transparent; border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 8px; }
-.alert.r { border-left-color: var(--red); background: var(--red-bg); }
-.alert.a { border-left-color: var(--amber); background: var(--amber-bg); }
-.alert.g { border-left-color: var(--green); background: var(--green-bg); }
+.alert { border-left: 3px solid transparent; border-radius: 0 10px 10px 0; padding: 10px 14px; margin-bottom: 8px; }
+.alert.r { border-left-color: #D94F3D; background: #FDF0EE; }
+.alert.a { border-left-color: #C97B1A; background: #FDF5E6; }
+.alert.g { border-left-color: #1D9E75; background: #EAF7F1; }
 .alert-t { font-size: 13px; font-weight: 500; margin-bottom: 2px; }
-.alert.r .alert-t { color: var(--red-text); }
-.alert.a .alert-t { color: var(--amber-text); }
-.alert.g .alert-t { color: var(--green-text); }
-.alert-d { font-size: 12px; line-height: 1.5; color: var(--text2); }
+.alert.r .alert-t { color: #8B2315; }
+.alert.a .alert-t { color: #7A4A08; }
+.alert.g .alert-t { color: #0A5C42; }
+.alert-d { font-size: 12px; line-height: 1.5; color: #6B6B67; }
 
 /* METAS */
-.meta-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 12px; }
+.meta-card { background: #FFFFFF; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 1.25rem; margin-bottom: 12px; }
 .meta-hdr { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .75rem; }
 .meta-nome { font-size: 14px; font-weight: 500; }
-.meta-prazo { font-size: 11px; color: var(--text3); margin-top: 2px; }
-.meta-prog { height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; margin: .5rem 0; }
+.meta-prazo { font-size: 11px; color: #9C9C98; margin-top: 2px; }
+.meta-prog { height: 6px; background: #F2F2EF; border-radius: 3px; overflow: hidden; margin: .5rem 0; }
 .meta-prog-f { height: 100%; border-radius: 3px; transition: width .4s; }
 .meta-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: .75rem; }
-.meta-stat { background: var(--surface2); border-radius: 8px; padding: 8px 10px; }
-.meta-stat-l { font-size: 10px; color: var(--text3); margin-bottom: 3px; text-transform: uppercase; letter-spacing: .04em; }
-.meta-stat-v { font-size: 13px; font-weight: 500; color: var(--text); }
+.meta-stat { background: #F2F2EF; border-radius: 8px; padding: 8px 10px; }
+.meta-stat-l { font-size: 10px; color: #9C9C98; margin-bottom: 3px; text-transform: uppercase; letter-spacing: .04em; }
+.meta-stat-v { font-size: 13px; font-weight: 500; color: #1A1A18; }
 
 /* FORM */
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-.form-grid input, .form-grid select, input.full, select.full { width: 100%; padding: 8px 12px; border: 1px solid var(--border2); border-radius: var(--radius); font-size: 13px; font-family: inherit; background: var(--surface); color: var(--text); outline: none; transition: border-color .15s; }
-.form-grid input:focus, .form-grid select:focus, input.full:focus { border-color: var(--green); }
-.btn { padding: 8px 18px; border-radius: var(--radius); font-size: 13px; font-weight: 500; font-family: inherit; cursor: pointer; border: none; transition: all .15s; }
-.btn-green { background: var(--green); color: #fff; }
+.form-grid input, .form-grid select, input.full, select.full { width: 100%; padding: 8px 12px; border: 1px solid rgba(0,0,0,0.14); border-radius: 10px; font-size: 13px; font-family: inherit; background: #FFFFFF; color: #1A1A18; outline: none; transition: border-color .15s; }
+.form-grid input:focus, .form-grid select:focus, input.full:focus { border-color: #1D9E75; }
+.btn { padding: 8px 18px; border-radius: 10px; font-size: 13px; font-weight: 500; font-family: inherit; cursor: pointer; border: none; transition: all .15s; }
+.btn-green { background: #1D9E75; color: #fff; }
 .btn-green:hover { background: #168a64; }
-.btn-outline { background: none; border: 1px solid var(--border2); color: var(--text2); }
-.btn-outline:hover { background: var(--surface2); color: var(--text); }
-.btn-danger { background: none; border: 1px solid #F5C6C0; color: var(--red-text); }
-.btn-danger:hover { background: var(--red-bg); }
+.btn-outline { background: none; border: 1px solid rgba(0,0,0,0.14); color: #6B6B67; }
+.btn-outline:hover { background: #F2F2EF; color: #1A1A18; }
+.btn-danger { background: none; border: 1px solid #F5C6C0; color: #8B2315; }
+.btn-danger:hover { background: #FDF0EE; }
 
 /* TABLE */
 .tbl-wrap { overflow-x: auto; }
 table.tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
-table.tbl th { font-size: 11px; font-weight: 500; color: var(--text2); text-transform: uppercase; letter-spacing: .05em; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
-table.tbl td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
+table.tbl th { font-size: 11px; font-weight: 500; color: #6B6B67; text-transform: uppercase; letter-spacing: .05em; padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.08); white-space: nowrap; }
+table.tbl td { padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,0.08); color: #1A1A18; vertical-align: middle; }
 table.tbl tr:last-child td { border-bottom: none; }
-table.tbl tr:hover td { background: var(--surface2); }
+table.tbl tr:hover td { background: #F2F2EF; }
 .mono { font-family: 'DM Mono', monospace; font-size: 12px; }
 
 /* IMPORT */
-.import-zone { border: 2px dashed var(--border2); border-radius: var(--radius-lg); padding: 2rem; text-align: center; margin-bottom: 1rem; }
-.import-zone svg { width: 32px; height: 32px; color: var(--text3); margin-bottom: .75rem; }
+.import-zone { border: 2px dashed rgba(0,0,0,0.14); border-radius: 14px; padding: 2rem; text-align: center; margin-bottom: 1rem; }
+.import-zone svg { width: 32px; height: 32px; color: #9C9C98; margin-bottom: .75rem; }
 .import-title { font-size: 14px; font-weight: 500; margin-bottom: .5rem; }
-.import-sub { font-size: 12px; color: var(--text2); margin-bottom: 1rem; }
+.import-sub { font-size: 12px; color: #6B6B67; margin-bottom: 1rem; }
 
 /* PATRIMONIO */
-.fi-box { background: var(--surface2); border-radius: var(--radius-lg); padding: 1.25rem; text-align: center; }
-.fi-lbl { font-size: 10px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
-.fi-val { font-size: 24px; font-weight: 500; color: var(--green); letter-spacing: -.03em; }
-.fi-sub { font-size: 11px; color: var(--text3); margin-top: 4px; }
-.fi-prog { height: 6px; background: var(--surface); border-radius: 3px; overflow: hidden; margin: 10px 0 5px; }
-.fi-prog-f { height: 100%; border-radius: 3px; background: var(--green); }
+.fi-box { background: #F2F2EF; border-radius: 14px; padding: 1.25rem; text-align: center; }
+.fi-lbl { font-size: 10px; font-weight: 500; color: #9C9C98; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+.fi-val { font-size: 24px; font-weight: 500; color: #1D9E75; letter-spacing: -.03em; }
+.fi-sub { font-size: 11px; color: #9C9C98; margin-top: 4px; }
+.fi-prog { height: 6px; background: #FFFFFF; border-radius: 3px; overflow: hidden; margin: 10px 0 5px; }
+.fi-prog-f { height: 100%; border-radius: 3px; background: #1D9E75; }
 
 /* LOADING */
-.loading { display: flex; align-items: center; justify-content: center; padding: 3rem; color: var(--text3); font-size: 13px; gap: 8px; }
-.spin { width: 16px; height: 16px; border: 2px solid var(--border2); border-top-color: var(--green); border-radius: 50%; animation: spin .7s linear infinite; }
+.loading { display: flex; align-items: center; justify-content: center; padding: 3rem; color: #9C9C98; font-size: 13px; gap: 8px; }
+.spin { width: 16px; height: 16px; border: 2px solid rgba(0,0,0,0.14); border-top-color: #1D9E75; border-radius: 50%; animation: spin .7s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* STATUS TABLE */
 .chip { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 20px; }
-.chip-ok { background: var(--green-bg); color: var(--green-text); }
-.chip-p { background: var(--amber-bg); color: var(--amber-text); }
-.chip-w { background: var(--surface2); color: var(--text2); }
-.chip-n { background: var(--surface2); color: var(--text3); }
+.chip-ok { background: #EAF7F1; color: #0A5C42; }
+.chip-p { background: #FDF5E6; color: #7A4A08; }
+.chip-w { background: #F2F2EF; color: #6B6B67; }
+.chip-n { background: #F2F2EF; color: #9C9C98; }
 
 /* TOAST */
-#toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--text); color: #fff; padding: 10px 18px; border-radius: var(--radius); font-size: 13px; font-weight: 500; opacity: 0; transform: translateY(8px); transition: all .25s; pointer-events: none; z-index: 999; }
+#toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: #1A1A18; color: #fff; padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 500; opacity: 0; transform: translateY(8px); transition: all .25s; pointer-events: none; z-index: 999; }
 #toast.show { opacity: 1; transform: translateY(0); }
 
 /* MONTH SELECTOR */
 .month-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 1.25rem; flex-wrap: wrap; }
-.month-btn { padding: 5px 12px; border: 1px solid var(--border2); border-radius: 20px; font-size: 12px; font-weight: 400; background: none; cursor: pointer; font-family: inherit; color: var(--text2); transition: all .12s; }
-.month-btn:hover { background: var(--surface2); }
-.month-btn.on { background: var(--green); color: #fff; border-color: var(--green); font-weight: 500; }
+.month-btn { padding: 5px 12px; border: 1px solid rgba(0,0,0,0.14); border-radius: 20px; font-size: 12px; font-weight: 400; background: none; cursor: pointer; font-family: inherit; color: #6B6B67; transition: all .12s; }
+.month-btn:hover { background: #F2F2EF; }
+.month-btn.on { background: #1D9E75; color: #fff; border-color: #1D9E75; font-weight: 500; }
 </style>
 </head>
 <body>
@@ -288,9 +288,9 @@ table.tbl tr:hover td { background: var(--surface2); }
         <div class="card">
           <div class="card-title">Receita vs. Despesa</div>
           <div id="wrap-rdv" style="position:relative;width:100%;height:200px"><canvas id="chart-rdv" role="img" aria-label="Receita vs despesa mensal"></canvas></div>
-          <div style="display:flex;gap:14px;margin-top:10px;font-size:12px;color:var(--text2)">
-            <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:var(--green);display:inline-block"></span>Receita</span>
-            <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:var(--red);display:inline-block"></span>Despesa</span>
+          <div style="display:flex;gap:14px;margin-top:10px;font-size:12px;color:#6B6B67">
+            <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#1D9E75;display:inline-block"></span>Receita</span>
+            <span style="display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:#D94F3D;display:inline-block"></span>Despesa</span>
           </div>
         </div>
         <div class="card">
@@ -318,7 +318,7 @@ table.tbl tr:hover td { background: var(--surface2); }
       </div>
       <div class="card">
         <div style="display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap">
-          <select id="fil-mes" onchange="loadLancamentos()" style="font-size:13px;padding:6px 10px;border:1px solid var(--border2);border-radius:var(--radius);font-family:inherit;background:var(--surface);color:var(--text)">
+          <select id="fil-mes" onchange="loadLancamentos()" style="font-size:13px;padding:6px 10px;border:1px solid rgba(0,0,0,0.14);border-radius:10px;font-family:inherit;background:#FFFFFF;color:#1A1A18">
             <option value="">Todos os meses</option>
             <option value="2026-01">Janeiro 2026</option>
             <option value="2026-02">Fevereiro 2026</option>
@@ -326,7 +326,7 @@ table.tbl tr:hover td { background: var(--surface2); }
             <option value="2026-04">Abril 2026</option>
             <option value="2026-05">Maio 2026</option>
           </select>
-          <select id="fil-cat" onchange="loadLancamentos()" style="font-size:13px;padding:6px 10px;border:1px solid var(--border2);border-radius:var(--radius);font-family:inherit;background:var(--surface);color:var(--text)">
+          <select id="fil-cat" onchange="loadLancamentos()" style="font-size:13px;padding:6px 10px;border:1px solid rgba(0,0,0,0.14);border-radius:10px;font-family:inherit;background:#FFFFFF;color:#1A1A18">
             <option value="">Todas as categorias</option>
             <option>REC.DIVIDENDOS</option><option>INV.RF.BRASIL</option><option>INV.PREVIDENCIA</option><option>INV.ALTERNATIVO</option>
             <option>DESP.MORADIA</option><option>DESP.SAUDE</option><option>DESP.TRANSPORTE</option><option>DESP.EDUCACAO</option>
@@ -355,22 +355,22 @@ table.tbl tr:hover td { background: var(--surface2); }
           <div class="row"><div><div class="row-l">XP — Fundos Brasil</div><div class="row-s">INV.RV.BRASIL</div></div><div class="row-v g">R$ 343.000</div></div>
           <div class="row"><div><div class="row-l">XP — Fundos Internacional</div><div class="row-s">INV.RV.EXTERIOR</div></div><div class="row-v g">R$ 250.000</div></div>
           <div class="row"><div><div class="row-l">VGBL XP ×5</div><div class="row-s">INV.PREVIDENCIA</div></div><div class="row-v g">R$ 6.000</div></div>
-          <div class="row" style="border-top:1px solid var(--border2);margin-top:4px;padding-top:10px"><div class="row-l" style="font-weight:500">Total financeiro</div><div class="row-v g" style="font-size:15px">R$ 599.000</div></div>
+          <div class="row" style="border-top:1px solid rgba(0,0,0,0.14);margin-top:4px;padding-top:10px"><div class="row-l" style="font-weight:500">Total financeiro</div><div class="row-v g" style="font-size:15px">R$ 599.000</div></div>
         </div>
         <div class="card">
           <div class="card-title">Imóveis &amp; passivos</div>
           <div class="row"><div><div class="row-l">Apto habitual</div><div class="row-s">Residência principal</div></div><div class="row-v g">R$ 1.200.000</div></div>
           <div class="row"><div><div class="row-l">Casa Lucas</div><div class="row-s">Imóvel adicional</div></div><div class="row-v g">R$ 250.000</div></div>
           <div class="row"><div><div class="row-l">Financiamento imob.</div><div class="row-s">R$ 4.296/mês</div></div><div class="row-v r">−R$ 97.000</div></div>
-          <div class="row" style="border-top:1px solid var(--border2);margin-top:4px;padding-top:10px"><div class="row-l" style="font-weight:500">Imóveis líquidos</div><div class="row-v g" style="font-size:15px">R$ 1.353.000</div></div>
+          <div class="row" style="border-top:1px solid rgba(0,0,0,0.14);margin-top:4px;padding-top:10px"><div class="row-l" style="font-weight:500">Imóveis líquidos</div><div class="row-v g" style="font-size:15px">R$ 1.353.000</div></div>
         </div>
       </div>
       <div class="card">
         <div class="card-title">FI Number — Independência financeira</div>
         <div class="g3">
-          <div class="fi-box"><div class="fi-lbl">FI Number (4% SWR)</div><div class="fi-val">R$ 7,5M</div><div class="fi-sub">Regra dos 25x</div><div class="fi-prog"><div class="fi-prog-f" style="width:8%"></div></div><div style="font-size:11px;color:var(--text3)">8% · carteira financeira</div></div>
-          <div class="fi-box"><div class="fi-lbl">FI Number (3% SWR)</div><div class="fi-val">R$ 10M</div><div class="fi-sub">Conservador / legado</div><div class="fi-prog"><div class="fi-prog-f" style="width:6%"></div></div><div style="font-size:11px;color:var(--text3)">6% · carteira financeira</div></div>
-          <div class="fi-box"><div class="fi-lbl">PL total vs FI 4%</div><div class="fi-val" style="color:var(--blue)">R$ 2,14M</div><div class="fi-sub">Incl. imóveis</div><div class="fi-prog"><div class="fi-prog-f" style="width:21%;background:var(--blue)"></div></div><div style="font-size:11px;color:var(--text3)">21% do FI · total patrimônio</div></div>
+          <div class="fi-box"><div class="fi-lbl">FI Number (4% SWR)</div><div class="fi-val">R$ 7,5M</div><div class="fi-sub">Regra dos 25x</div><div class="fi-prog"><div class="fi-prog-f" style="width:8%"></div></div><div style="font-size:11px;color:#9C9C98">8% · carteira financeira</div></div>
+          <div class="fi-box"><div class="fi-lbl">FI Number (3% SWR)</div><div class="fi-val">R$ 10M</div><div class="fi-sub">Conservador / legado</div><div class="fi-prog"><div class="fi-prog-f" style="width:6%"></div></div><div style="font-size:11px;color:#9C9C98">6% · carteira financeira</div></div>
+          <div class="fi-box"><div class="fi-lbl">PL total vs FI 4%</div><div class="fi-val" style="color:#2B6CB0">R$ 2,14M</div><div class="fi-sub">Incl. imóveis</div><div class="fi-prog"><div class="fi-prog-f" style="width:21%;background:#2B6CB0"></div></div><div style="font-size:11px;color:#9C9C98">21% do FI · total patrimônio</div></div>
         </div>
       </div>
     </div>
@@ -418,10 +418,10 @@ table.tbl tr:hover td { background: var(--surface2); }
         </div>
         <div>
           <div class="card-title" style="margin-bottom:.75rem">Plano de ação</div>
-          <div class="card" style="padding:.75rem 1rem;margin-bottom:8px;display:flex;gap:10px;align-items:center"><div style="width:22px;height:22px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--text2);flex-shrink:0">1</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Trazer fatura Itaú Azul maio</div><div style="font-size:11px;color:var(--text3)">Próx. final de semana</div></div><span style="width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0"></span></div>
-          <div class="card" style="padding:.75rem 1rem;margin-bottom:8px;display:flex;gap:10px;align-items:center"><div style="width:22px;height:22px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--text2);flex-shrink:0">2</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Definir envelope mensal lazer</div><div style="font-size:11px;color:var(--text3)">Junho</div></div><span style="width:7px;height:7px;border-radius:50%;background:var(--amber);flex-shrink:0"></span></div>
-          <div class="card" style="padding:.75rem 1rem;margin-bottom:8px;display:flex;gap:10px;align-items:center"><div style="width:22px;height:22px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--text2);flex-shrink:0">3</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Detalhar Skyline jan–abr item a item</div><div style="font-size:11px;color:var(--text3)">Próxima sessão</div></div><span style="width:7px;height:7px;border-radius:50%;background:var(--amber);flex-shrink:0"></span></div>
-          <div class="card" style="padding:.75rem 1rem;margin-bottom:8px;display:flex;gap:10px;align-items:center"><div style="width:22px;height:22px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--text2);flex-shrink:0">4</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Investigar Energisa +64%</div><div style="font-size:11px;color:var(--text3)">Maio</div></div><span style="width:7px;height:7px;border-radius:50%;background:var(--amber);flex-shrink:0"></span></div>
+          <div class="card" style="padding:.75rem 1rem;margin-bottom:8px;display:flex;gap:10px;align-items:center"><div style="width:22px;height:22px;border-radius:50%;background:#F2F2EF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#6B6B67;flex-shrink:0">1</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Trazer fatura Itaú Azul maio</div><div style="font-size:11px;color:#9C9C98">Próx. final de semana</div></div><span style="width:7px;height:7px;border-radius:50%;background:#D94F3D;flex-shrink:0"></span></div>
+          <div class="card" style="padding:.75rem 1rem;margin-bottom:8px;display:flex;gap:10px;align-items:center"><div style="width:22px;height:22px;border-radius:50%;background:#F2F2EF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#6B6B67;flex-shrink:0">2</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Definir envelope mensal lazer</div><div style="font-size:11px;color:#9C9C98">Junho</div></div><span style="width:7px;height:7px;border-radius:50%;background:#C97B1A;flex-shrink:0"></span></div>
+          <div class="card" style="padding:.75rem 1rem;margin-bottom:8px;display:flex;gap:10px;align-items:center"><div style="width:22px;height:22px;border-radius:50%;background:#F2F2EF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#6B6B67;flex-shrink:0">3</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Detalhar Skyline jan–abr item a item</div><div style="font-size:11px;color:#9C9C98">Próxima sessão</div></div><span style="width:7px;height:7px;border-radius:50%;background:#C97B1A;flex-shrink:0"></span></div>
+          <div class="card" style="padding:.75rem 1rem;margin-bottom:8px;display:flex;gap:10px;align-items:center"><div style="width:22px;height:22px;border-radius:50%;background:#F2F2EF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#6B6B67;flex-shrink:0">4</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Investigar Energisa +64%</div><div style="font-size:11px;color:#9C9C98">Maio</div></div><span style="width:7px;height:7px;border-radius:50%;background:#C97B1A;flex-shrink:0"></span></div>
         </div>
       </div>
     </div>
@@ -712,7 +712,7 @@ async function showDFCMes(mes, btn) {
       <div class="row"><div><div class="row-l">Consórcio Thaisa</div><div class="row-s">INV.ALTERNATIVO</div></div><div class="row-v b">R$ 1.300</div></div>
       <div class="row"><div><div class="row-l">Esporte & bem-estar</div><div class="row-s">Personal Swim + Coach</div></div><div class="row-v b">R$ 752</div></div>
       <div class="row"><div><div class="row-l">Previdência</div><div class="row-s">XP VGBL ×5</div></div><div class="row-v b">R$ 633</div></div>
-      <div class="row" style="border-top:1px solid var(--border2);margin-top:4px;padding-top:10px"><div class="row-l" style="font-weight:500">Total fixo</div><div class="row-v b" style="font-size:15px">R$ 19.247</div></div>
+      <div class="row" style="border-top:1px solid rgba(0,0,0,0.14);margin-top:4px;padding-top:10px"><div class="row-l" style="font-weight:500">Total fixo</div><div class="row-v b" style="font-size:15px">R$ 19.247</div></div>
     </div>
   `;
 }
@@ -728,7 +728,7 @@ async function loadLancamentos() {
   if (cat) q = q.eq('categoria', cat);
   const { data, error } = await q;
   if (error || !data || data.length === 0) {
-    el.innerHTML = '<div style="padding:2rem;text-align:center;color:var(--text3);font-size:13px">Nenhum lançamento encontrado. Importe um extrato ou adicione manualmente.</div>';
+    el.innerHTML = '<div style="padding:2rem;text-align:center;color:#9C9C98;font-size:13px">Nenhum lançamento encontrado. Importe um extrato ou adicione manualmente.</div>';
     return;
   }
   el.innerHTML = `<table class="tbl">
@@ -737,10 +737,10 @@ async function loadLancamentos() {
       <tr>
         <td class="mono">${new Date(l.data).toLocaleDateString('pt-BR')}</td>
         <td>${l.descricao}</td>
-        <td class="mono" style="color:${l.tipo==='receita'?'var(--green)':'var(--red)'}">${l.tipo==='receita'?'+':'-'} ${R(l.valor)}</td>
+        <td class="mono" style="color:${l.tipo==='receita'?'#1D9E75':'#D94F3D'}">${l.tipo==='receita'?'+':'-'} ${R(l.valor)}</td>
         <td><span class="bdg ${l.tipo==='receita'?'bdg-g':l.tipo==='investimento'?'bdg-b':'bdg-r'}">${l.tipo}</span></td>
-        <td><span style="font-size:11px;font-family:var(--mono,monospace);color:var(--text2)">${l.categoria}</span></td>
-        <td style="font-size:12px;color:var(--text3)">${l.fonte}</td>
+        <td><span style="font-size:11px;font-family:monospace;color:#6B6B67">${l.categoria}</span></td>
+        <td style="font-size:12px;color:#9C9C98">${l.fonte}</td>
       </tr>`).join('')}
     </tbody>
   </table>`;
@@ -771,13 +771,13 @@ async function loadMetas() {
   const el = document.getElementById('metas-list');
   const { data } = await sb.from('metas').select('*').order('created_at');
   if (!data || data.length === 0) {
-    el.innerHTML = '<div style="padding:1rem;color:var(--text3);font-size:13px">Nenhuma meta cadastrada.</div>';
+    el.innerHTML = '<div style="padding:1rem;color:#9C9C98;font-size:13px">Nenhuma meta cadastrada.</div>';
     return;
   }
   const colors = { verde: '#1D9E75', amarelo: '#C97B1A', vermelho: '#D94F3D' };
   const labels = { verde: 'No caminho', amarelo: 'Atenção', vermelho: 'Atrasada' };
-  const bgL = { verde: 'var(--green-bg)', amarelo: 'var(--amber-bg)', vermelho: 'var(--red-bg)' };
-  const txL = { verde: 'var(--green-text)', amarelo: 'var(--amber-text)', vermelho: 'var(--red-text)' };
+  const bgL = { verde: '#EAF7F1', amarelo: '#FDF5E6', vermelho: '#FDF0EE' };
+  const txL = { verde: '#0A5C42', amarelo: '#7A4A08', vermelho: '#8B2315' };
   el.innerHTML = data.map(m => {
     const pct = Math.min(100, Math.round((m.valor_atual / m.valor_alvo) * 100));
     const faltam = Math.max(0, m.valor_alvo - m.valor_atual);
@@ -790,7 +790,7 @@ async function loadMetas() {
           ${currentProfile?.papel==='admin'?`<button class="btn btn-danger" style="padding:4px 8px;font-size:11px" onclick="deleteMeta('${m.id}')">Excluir</button>`:''}
         </div>
       </div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:4px"><span>${R(m.valor_atual)} de ${R(m.valor_alvo)}</span><span style="font-weight:500;color:${colors[m.status]}">${pct}%</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:#6B6B67;margin-bottom:4px"><span>${R(m.valor_atual)} de ${R(m.valor_alvo)}</span><span style="font-weight:500;color:${colors[m.status]}">${pct}%</span></div>
       <div class="meta-prog"><div class="meta-prog-f" style="width:${pct}%;background:${colors[m.status]}"></div></div>
       <div class="meta-stats">
         <div class="meta-stat"><div class="meta-stat-l">Valor alvo</div><div class="meta-stat-v">${R(m.valor_alvo)}</div></div>
@@ -829,11 +829,11 @@ async function deleteMeta(id) {
 async function loadRegras() {
   const el = document.getElementById('regras-list');
   const { data } = await sb.from('regras_categorizacao').select('*').order('prioridade', { ascending: false });
-  if (!data || data.length === 0) { el.innerHTML = '<div style="color:var(--text3);font-size:13px">Nenhuma regra cadastrada.</div>'; return; }
+  if (!data || data.length === 0) { el.innerHTML = '<div style="color:#9C9C98;font-size:13px">Nenhuma regra cadastrada.</div>'; return; }
   el.innerHTML = data.map(r => `
     <div class="row">
       <div><div class="row-l mono">${r.descricao_pattern}</div></div>
-      <span style="font-size:11px;font-family:monospace;color:var(--text2);background:var(--surface2);padding:3px 9px;border-radius:6px">${r.categoria}</span>
+      <span style="font-size:11px;font-family:monospace;color:#6B6B67;background:#F2F2EF;padding:3px 9px;border-radius:6px">${r.categoria}</span>
     </div>`).join('');
 }
 </script>
