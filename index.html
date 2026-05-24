@@ -558,7 +558,7 @@ async function onLogin(user) {
   document.getElementById('sb-urole').textContent = profile?.papel === 'admin' ? 'Administrador' : 'Visualizador';
   document.getElementById('sb-avatar').textContent = (profile?.nome || user.email)[0].toUpperCase();
   document.getElementById('auth-screen').style.display = 'none';
-  document.getElementById('app-screen').style.display = '';
+  document.getElementById('app-screen').style.display = 'flex';
   if (profile?.papel !== 'admin') lockEditing();
   loadVisaoGeral();
   loadMetas();
