@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Família Grings — Planejamento Financeiro</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -238,30 +240,61 @@ table.tbl tr:hover td{background:#F7F7F5}
     </div>
 
     <div class="page" id="page-importar">
-      <div class="page-hdr"><div><div class="page-title">Importar dados</div><div class="page-sub">Lançamentos manuais ou via AI</div></div></div>
+      <div class="page-hdr"><div><div class="page-title">Importar dados</div><div class="page-sub">Upload de PDF, Excel ou texto — AI categoriza automaticamente</div></div></div>
+      <div class="card" style="margin-bottom:12px">
+        <div class="card-title">Upload de arquivo</div>
+        <div id="drop-zone" style="border:2px dashed rgba(0,0,0,.14);border-radius:12px;padding:2.5rem;text-align:center;cursor:pointer;transition:all .2s;background:#FAFAF9" onclick="document.getElementById('file-input').click()" ondragover="event.preventDefault();this.style.borderColor='#1D9E75';this.style.background='#EAF7F1'" ondragleave="this.style.borderColor='rgba(0,0,0,.14)';this.style.background='#FAFAF9'" ondrop="handleDrop(event)">
+          <div style="font-size:36px;margin-bottom:.75rem">&#128196;</div>
+          <div style="font-size:14px;font-weight:500;color:#1A1A18;margin-bottom:4px">Arraste o arquivo aqui ou clique para selecionar</div>
+          <div style="font-size:12px;color:#9C9C98">Suporta PDF de texto, Excel (.xlsx), CSV e TXT</div>
+          <input type="file" id="file-input" accept=".pdf,.xlsx,.xls,.csv,.txt" style="display:none" onchange="handleFileSelect(event)">
+        </div>
+        <div id="file-status" style="margin-top:10px;display:none">
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#EAF7F1;border-radius:10px">
+            <span style="font-size:20px">&#128206;</span>
+            <div style="flex:1"><div id="file-name" style="font-size:13px;font-weight:500;color:#0A5C42"></div><div id="file-size" style="font-size:11px;color:#6B6B67"></div></div>
+            <button onclick="clearFile()" style="background:none;border:none;cursor:pointer;color:#9C9C98;font-size:20px;line-height:1">x</button>
+          </div>
+        </div>
+      </div>
       <div class="g2">
         <div class="card">
-          <div class="card-title">Lançamento manual</div>
+          <div class="card-title">Configurar importacao</div>
+          <span class="fl">Mes de referencia</span>
+          <select id="imp-mes" style="margin-bottom:8px">
+            <option value="2026-01">Janeiro 2026</option><option value="2026-02">Fevereiro 2026</option>
+            <option value="2026-03">Marco 2026</option><option value="2026-04">Abril 2026</option>
+            <option value="2026-05">Maio 2026</option><option value="2026-06" selected>Junho 2026</option>
+            <option value="2026-07">Julho 2026</option><option value="2026-08">Agosto 2026</option>
+            <option value="2026-09">Setembro 2026</option><option value="2026-10">Outubro 2026</option>
+            <option value="2026-11">Novembro 2026</option><option value="2026-12">Dezembro 2026</option>
+          </select>
+          <span class="fl">Fonte / Banco</span>
+          <select id="imp-fonte" style="margin-bottom:8px">
+            <option value="porto_bank">Porto Bank</option><option value="itau_skyline">Itau Skyline</option>
+            <option value="itau_cc">Itau CC</option><option value="tamara">Tamara</option><option value="outros">Outros</option>
+          </select>
+          <span class="fl">Ou cole o texto diretamente</span>
+          <textarea id="imp-dados" placeholder="Cole aqui o texto copiado do extrato ou fatura..." style="min-height:100px;margin-bottom:10px"></textarea>
+          <button class="btn btn-g" style="width:100%" id="btn-processar" onclick="processarImport()">Processar com AI</button>
+          <div style="margin-top:10px;padding:10px 12px;background:#F2F2EF;border-radius:8px;font-size:12px;color:#6B6B67;line-height:1.6">
+            A AI le o arquivo ou texto, identifica os lancamentos, aplica as regras de categorizacao e apresenta para revisao antes de salvar.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Lancamento manual</div>
           <div class="form-grid">
             <div><span class="fl">Data</span><input type="date" id="l-data"></div>
-            <div><span class="fl">Descrição</span><input id="l-desc" placeholder="Descrição do lançamento"></div>
+            <div><span class="fl">Descricao</span><input id="l-desc" placeholder="Descricao"></div>
             <div><span class="fl">Valor (R$)</span><input id="l-valor" type="number" step="0.01" placeholder="0,00"></div>
             <div><span class="fl">Tipo</span><select id="l-tipo"><option value="receita">Receita</option><option value="despesa">Despesa</option><option value="investimento">Investimento</option></select></div>
             <div><span class="fl">Categoria</span><select id="l-cat"><option value="REC.DIVIDENDOS">REC.DIVIDENDOS</option><option value="REC.SALARIO">REC.SALARIO</option><option value="REC.OUTROS">REC.OUTROS</option><option value="INV.RF.BRASIL">INV.RF.BRASIL</option><option value="INV.PREVIDENCIA">INV.PREVIDENCIA</option><option value="INV.ALTERNATIVO">INV.ALTERNATIVO</option><option value="DESP.MORADIA">DESP.MORADIA</option><option value="DESP.SAUDE">DESP.SAUDE</option><option value="DESP.TRANSPORTE">DESP.TRANSPORTE</option><option value="DESP.EDUCACAO">DESP.EDUCACAO</option><option value="DESP.SEGUROS">DESP.SEGUROS</option><option value="DESP.ALIMENTACAO">DESP.ALIMENTACAO</option><option value="DESP.LAZER">DESP.LAZER</option><option value="DESP.VESTUARIO">DESP.VESTUARIO</option><option value="DESP.OUTROS">DESP.OUTROS</option></select></div>
-            <div><span class="fl">Fonte</span><select id="l-fonte"><option value="porto_bank">Porto Bank</option><option value="itau_skyline">Itaú Skyline</option><option value="itau_cc">Itaú CC</option><option value="tamara">Tamara</option><option value="manual">Manual</option></select></div>
+            <div><span class="fl">Fonte</span><select id="l-fonte"><option value="porto_bank">Porto Bank</option><option value="itau_skyline">Itau Skyline</option><option value="itau_cc">Itau CC</option><option value="tamara">Tamara</option><option value="manual">Manual</option></select></div>
           </div>
-          <button class="btn btn-g" id="btn-salvar-lanc" onclick="saveLancamento()">Salvar lançamento</button>
-        </div>
-        <div class="card">
-          <div class="card-title">Processar extrato com AI</div>
-          <p style="font-size:13px;color:#6B6B67;margin-bottom:1rem;line-height:1.6">Cole o conteúdo do extrato ou fatura. A AI categoriza automaticamente e apresenta para sua revisão antes de salvar.</p>
-          <span class="fl">Mês de referência</span><select id="imp-mes" style="margin-bottom:8px"><option value="2026-01">Janeiro 2026</option><option value="2026-02">Fevereiro 2026</option><option value="2026-03">Março 2026</option><option value="2026-04">Abril 2026</option><option value="2026-05" selected>Maio 2026</option><option value="2026-06">Junho 2026</option></select>
-          <span class="fl">Fonte</span><select id="imp-fonte" style="margin-bottom:8px"><option value="porto_bank">Porto Bank</option><option value="itau_skyline">Itaú Skyline</option><option value="itau_cc">Itaú CC</option><option value="tamara">Tamara</option></select>
-          <span class="fl">Dados do extrato</span><textarea id="imp-dados" placeholder="Cole aqui o conteúdo do extrato ou fatura..."></textarea>
-          <button class="btn btn-g" style="margin-top:10px;width:100%" onclick="processarImport()">Processar com AI</button>
-          <div id="imp-resultado" style="margin-top:12px"></div>
+          <button class="btn btn-g" id="btn-salvar-lanc" onclick="saveLancamento()">Salvar lancamento</button>
         </div>
       </div>
+      <div id="imp-resultado" style="margin-top:4px"></div>
     </div>
 
     <div class="page" id="page-categorias">
@@ -487,7 +520,8 @@ async function saveLancamento(){
 
 async function processarImport(){
   if(!isAdmin())return;
-  const dados=document.getElementById('imp-dados').value.trim();
+  const textoDireto=document.getElementById('imp-dados').value.trim();
+  const dados=fileContent||textoDireto;
   const mes=document.getElementById('imp-mes').value;
   const fonte=document.getElementById('imp-fonte').value;
   if(!dados){toast('Cole os dados primeiro',true);return}
@@ -682,6 +716,74 @@ async function saveRegra(){
   document.getElementById('cat-pattern').value='';
 }
 async function delRegra(id){if(!confirm('Excluir?'))return;await sb.from('regras_categorizacao').delete().eq('id',id);toast('Excluída');loadRegras()}
+
+// FILE UPLOAD
+let fileContent = '';
+async function handleDrop(e){
+  e.preventDefault();
+  document.getElementById('drop-zone').style.borderColor='rgba(0,0,0,.14)';
+  document.getElementById('drop-zone').style.background='#FAFAF9';
+  const f=e.dataTransfer.files[0];
+  if(f)await processFile(f);
+}
+async function handleFileSelect(e){
+  const f=e.target.files[0];
+  if(f)await processFile(f);
+}
+function clearFile(){
+  fileContent='';
+  document.getElementById('file-status').style.display='none';
+  document.getElementById('file-input').value='';
+  document.getElementById('drop-zone').style.display='block';
+}
+async function processFile(f){
+  const el=document.getElementById('file-status');
+  const nameEl=document.getElementById('file-name');
+  const sizeEl=document.getElementById('file-size');
+  nameEl.textContent=f.name;
+  sizeEl.textContent=(f.size/1024).toFixed(1)+' KB';
+  el.style.display='block';
+  const ext=f.name.split('.').pop().toLowerCase();
+  try{
+    if(ext==='pdf'){
+      fileContent=await readPDF(f);
+    }else if(ext==='xlsx'||ext==='xls'){
+      fileContent=await readExcel(f);
+    }else{
+      fileContent=await f.text();
+    }
+    sizeEl.textContent=(f.size/1024).toFixed(1)+' KB — pronto para processar';
+    toast('Arquivo lido: '+f.name);
+  }catch(err){
+    toast('Erro ao ler arquivo: '+err.message,true);
+    fileContent='';
+  }
+}
+async function readPDF(file){
+  const pdfjsLib=window['pdfjs-dist/build/pdf'];
+  pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const ab=await file.arrayBuffer();
+  const pdf=await pdfjsLib.getDocument({data:ab}).promise;
+  let text='';
+  for(let i=1;i<=pdf.numPages;i++){
+    const page=await pdf.getPage(i);
+    const content=await page.getTextContent();
+    text+=content.items.map(s=>s.str).join(' ')+'
+';
+  }
+  return text;
+}
+async function readExcel(file){
+  const ab=await file.arrayBuffer();
+  const wb=XLSX.read(ab,{type:'array'});
+  let text='';
+  wb.SheetNames.forEach(name=>{
+    const ws=wb.Sheets[name];
+    text+=XLSX.utils.sheet_to_csv(ws)+'
+';
+  });
+  return text;
+}
 
 async function sendAI(){
   const input=document.getElementById('ai-input');
